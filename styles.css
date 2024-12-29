@@ -1,0 +1,222 @@
+/* Reset body and apply background color black */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212; /* Warna hitam */
+    color: #f5f5f5; /* Warna teks putih cerah */
+    overflow: hidden;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+/* Styling for the stage container */
+.stage {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.stage.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Stage 1 (Kertas) styling */
+.paper-container {
+    position: relative;
+    background-color: #f0e5d8; /* Warna kertas */
+    width: 80%;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.love-icon {
+    font-size: 40px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.icon-envelope img {
+    width: 120px;
+    animation: bounce 1s infinite alternate; /* Animasi melompat */
+    margin-bottom: 20px;
+}
+
+/* Box styling (Stage 2, 3, 4, 5) */
+.box {
+    background-color: #ffffff; /* Warna latar belakang putih untuk kotak */
+    color: #333333; /* Warna teks gelap */
+    padding: 30px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    margin: 20px auto;
+    animation: slideInBox 1s ease-out; /* Animasi kotak muncul */
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* Styling for photo-container in Stage 3 */
+.photo-container {
+    margin-bottom: 20px;
+}
+
+.photo-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.btn {
+    background-color: #008C44; /* Warna hijau terang untuk tombol */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4CAF50; /* Efek hover dengan warna hijau lebih terang */
+    transform: scale(1.05);
+}
+
+/* Animasi kotak muncul */
+@keyframes slideInBox {
+    0% { transform: translateY(-30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Animasi bounce untuk icon amplop */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* Styling for final message */
+#stage5 .message p {
+    font-size: 22px;
+    animation: fadeInText 3s ease-out;
+}
+
+/* Final message text animation */
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Media Queries untuk perangkat mobile (Android) */
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .paper-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .box {
+        width: 90%;
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    .icon-envelope img {
+        width: 100px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .message p {
+        font-size: 18px;
+    }
+
+    .photo-container img {
+        width: 120px;
+    }
+
+    .falling-photo {
+        width: 90px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .box {
+        width: 90%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .message p {
+        font-size: 16px;
+    }
+
+    .photo-container img {
+        width: 100px;
+    }
+
+    .falling-photo {
+        width: 80px;
+    }
+}
+
+/* Styling for photos falling (Stage 4) */
+.falling-photos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.falling-photo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    animation: fall 3s infinite linear; /* Animasi foto jatuh */
+}
+
+.falling-photo:nth-child(1) { animation-delay: 1s; }
+.falling-photo:nth-child(2) { animation-delay: 2; }
+.falling-photo:nth-child(3) { animation-delay: 3s; }
+.falling-photo:nth-child(4) { animation-delay: 4s; }
+.falling-photo:nth-child(5) { animation-delay: 5s; }
+.falling-photo:nth-child(6) { animation-delay: 6s; }
+.falling-photo:nth-child(7) { animation-delay: 7s; }
+.falling-photo:nth-child(8) { animation-delay: 8s; }
+.falling-photo:nth-child(9) { animation-delay: 9s; }
+.falling-photo:nth-child(10) { animation-delay: 10s; }
+
+@keyframes fall {
+    0% { transform: translateY(-150px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
